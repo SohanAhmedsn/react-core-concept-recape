@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   return (
     <div className="App">
+      <LoadUsers></LoadUsers>
     <MyComponent brand="Apple" price="
     170000"></MyComponent>
     <MyComponent brand="Microsoft" price="10000"></MyComponent>
@@ -14,6 +15,31 @@ function App() {
   );
 }
 
+function LoadUsers() {
+  const [users, setUsers] = useState([]);
+  useEffect(() =>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res =>res.json())
+    .then(data=> setUsers(data))
+  }, [])
+  return (
+    <div>
+      <h1>Load User: {users.length}</h1>
+      {
+        users.map(user=><User name={user.name} phone={user.phone}></User> )
+      }
+    </div>
+  )
+}
+
+function User(props) {
+  return (
+    <div className="user">
+      <h2>Name: {props.name}</h2>
+      <p>Call me baby : {props.phone}</p>
+    </div>
+  )
+}
 
 function MyComponent(props){
   console.log(props);
