@@ -5,9 +5,8 @@ import { useEffect, useState } from 'react';
 function App() {
   return (
     <div className="App">
-      <LoadUsers></LoadUsers>
-    <MyComponent brand="Apple" price="
-    170000"></MyComponent>
+    <LoadUsers></LoadUsers>
+    <MyComponent brand="Apple" price="170000"></MyComponent>
     <MyComponent brand="Microsoft" price="10000"></MyComponent>
     <MyComponent brand="Google" price="0"></MyComponent>
     <MyComponent></MyComponent>
